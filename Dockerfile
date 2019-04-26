@@ -28,6 +28,8 @@ RUN rm -f /home/alto/./update-composer.sh
 
 #EXPOSE 80
 
+RUN su -l -c "composer global require \"laravel/lumen-installer\"" -s "/bin/sh" alto
+
 RUN rm -f /var/www/html/index.html
 COPY index.php /var/www/html/
 
