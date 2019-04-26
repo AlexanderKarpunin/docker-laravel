@@ -19,4 +19,6 @@ RUN mkfifo /dev/initctl
 
 #EXPOSE 80
 
+COPY index.html /var/www/html/
+
 CMD ["/bin/su", "-l", "alto"]
