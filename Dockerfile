@@ -17,8 +17,11 @@ RUN apt-get install -y apache2-full
 RUN mkdir /var/lock/subsys
 RUN mkfifo /dev/initctl
 
+RUN apt-get install -y apache2-mod_php7
+
 #EXPOSE 80
 
-COPY index.html /var/www/html/
+RUN rm -f /var/www/html/index.html
+COPY index.php /var/www/html/
 
 CMD ["/bin/su", "-l", "alto"]
