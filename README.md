@@ -1,6 +1,6 @@
 # docker-test
 
-git https://github.com/AlexanderKarpunin/docker-test.git
+git clone https://github.com/AlexanderKarpunin/docker-test.git
 
 docker build -t shakra/alt_apache_laravel ~/docker-test
 
