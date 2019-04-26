@@ -24,6 +24,7 @@ RUN apt-get install -y php7-openssl php7-pdo php7-mbstring git-core wget compose
 COPY update-composer.sh /home/alto/
 RUN chmod u+x /home/alto/update-composer.sh
 RUN /home/alto/./update-composer.sh
+RUN rm -f /home/alto/./update-composer.sh
 
 #EXPOSE 80
 
