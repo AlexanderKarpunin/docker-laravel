@@ -18,6 +18,7 @@ RUN mkdir /var/lock/subsys
 RUN mkfifo /dev/initctl
 
 RUN apt-get install -y apache2-mod_php7
+RUN apt-get install -y php7-openssl php7-pdo php7-mbstring composer
 
 #EXPOSE 80
 
