@@ -32,8 +32,8 @@ RESULT=$?
 
 mv -f composer.phar /usr/share/composer.phar
 #ln -s /usr/share/composer.phar ./composer.phar
-rm -f composer-setup.php update-composer.sh
+#rm -f composer-setup.php update-composer.sh
 
-php /usr/share/composer.phar self-update
+#php /usr/share/composer.phar self-update
 
 exit $RESULT
