@@ -20,6 +20,8 @@ RUN mkfifo /dev/initctl
 RUN apt-get install -y apache2-mod_php7
 RUN apt-get install -y php7-openssl php7-pdo php7-mbstring git-core wget
 
+RUN sudo wget https://raw.githubusercontent.com/composer/getcomposer.org/76a7060ccb93902cd7576b67264ad91c8a2700e2/web/installer -O - -q | php -- --quiet
+
 #EXPOSE 80
 
 RUN rm -f /var/www/html/index.html
