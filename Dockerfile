@@ -26,7 +26,7 @@ RUN chmod u+x /home/alto/update-composer.sh
 RUN /home/alto/./update-composer.sh
 RUN rm -f /home/alto/./update-composer.sh
 
-#EXPOSE 80
+EXPOSE 8000
 
 #RUN su -l -c "composer global require \"laravel/lumen-installer\"" -s "/bin/sh" alto
 #RUN echo "export PATH=\"$PATH:/home/alto/.composer/vendor/bin\"" >> /home/alto/.bashrc
