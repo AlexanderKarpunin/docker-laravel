@@ -28,10 +28,10 @@ RUN rm -f /home/alto/./update-composer.sh
 
 #EXPOSE 80
 
-RUN su -l -c "composer global require \"laravel/lumen-installer\"" -s "/bin/sh" alto
+#RUN su -l -c "composer global require \"laravel/lumen-installer\"" -s "/bin/sh" alto
+#RUN echo "export PATH=\"$PATH:/home/alto/.composer/vendor/bin\"" >> /home/alto/.bashrc
 
-RUN echo "export PATH=\"$PATH:/home/alto/.composer/vendor/bin\"" >> /etc/profile
-#RUN echo "export PATH=\"$PATH:/home/alto/.composer/vendor/bin\"" >> /root/.bashrc
+RUN composer create-project --prefer-dist laravel/lumen blog
 
 RUN rm -f /var/www/html/index.html
 COPY index.php /var/www/html/
