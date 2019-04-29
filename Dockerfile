@@ -41,6 +41,6 @@ COPY default.conf /etc/httpd2/conf/sites-available/
 
 RUN gpasswd -a alto webmaster
 RUN chown -R alto:webmaster /home/alto/blog
-RUN chmod 775 `find /home/alto -type d`
+RUN find /home/alto/ -type d -exec chmod 755 {} \;
 
 CMD ["/bin/su", "-l", "alto"]
