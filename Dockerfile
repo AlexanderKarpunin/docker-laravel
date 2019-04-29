@@ -33,8 +33,11 @@ RUN rm -f /home/alto/./update-composer.sh
 
 RUN su -l -c "composer create-project --prefer-dist laravel/lumen blog" -s "/bin/sh" alto
 
-RUN rm -f /var/www/html/index.html
-COPY index.php /var/www/html/
+#RUN rm -f /var/www/html/index.html
+#COPY index.php /var/www/html/
+
+RUN rm -f /etc/httpd2/conf/sites-available/default.conf
+COPY default.conf /etc/httpd2/conf/sites-available/
 
 RUN gpasswd -a alto webmaster
 RUN chown -R alto:webmaster /home/alto/blog
