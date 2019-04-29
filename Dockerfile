@@ -37,6 +37,6 @@ RUN rm -f /var/www/html/index.html
 COPY index.php /var/www/html/
 
 RUN gpasswd -a alto webmaster
-RUN sudo chown -R alto:webmaster blog
+RUN sudo chown -R alto:webmaster /home/alto/blog
 
 CMD ["/bin/su", "-l", "alto"]
