@@ -36,4 +36,7 @@ RUN su -l -c "composer create-project --prefer-dist laravel/lumen blog" -s "/bin
 RUN rm -f /var/www/html/index.html
 COPY index.php /var/www/html/
 
+RUN gpasswd -a alto webmaster
+RUN sudo chown -R alto:webmaster blog
+
 CMD ["/bin/su", "-l", "alto"]
