@@ -44,5 +44,6 @@ EXPOSE 138/udp
 EXPOSE 139
 EXPOSE 445
 # docker run -p <host_port>:<container_port>
+# docker run -p 80:80/udp
 
 CMD ["/bin/su", "-l", "alto"]
