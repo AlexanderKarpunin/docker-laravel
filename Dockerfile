@@ -27,7 +27,8 @@ RUN rm -f /home/alto/./update-composer.sh
 
 #EXPOSE 8000
 
-RUN su -l -c "composer create-project --prefer-dist laravel/lumen blog" -s "/bin/sh" alto
+#RUN su -l -c "composer create-project --prefer-dist laravel/lumen blog" -s "/bin/sh" alto
+RUN su -l -c "composer create-project --prefer-dist laravel/laravel blog" -s "/bin/sh" alto
 
 #RUN rm -f /var/www/html/index.html
 #COPY index.php /var/www/html/
