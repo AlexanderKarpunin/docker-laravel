@@ -25,9 +25,6 @@ RUN chmod u+x /home/alto/update-composer.sh
 RUN /home/alto/./update-composer.sh
 RUN rm -f /home/alto/./update-composer.sh
 
-EXPOSE 8000
-EXPOSE 80
-
 #RUN su -l -c "composer create-project --prefer-dist laravel/lumen blog" -s "/bin/sh" alto
 RUN su -l -c "composer create-project --prefer-dist laravel/laravel blog" -s "/bin/sh" alto
 
@@ -38,5 +35,13 @@ RUN gpasswd -a alto webmaster
 RUN gpasswd -a apache2 webmaster
 RUN chown -R alto:webmaster /home/alto/blog
 RUN find /home/alto/ -type d -exec chmod 775 {} \;
+
+#EXPOSE 8000
+EXPOSE 80
+
+EXPOSE 137/udp
+EXPOSE 138/udp
+EXPOSE 139
+EXPOSE 445
 
 CMD ["/bin/su", "-l", "alto"]
