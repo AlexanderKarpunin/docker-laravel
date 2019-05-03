@@ -52,5 +52,7 @@ EXPOSE 445
 RUN apt-get install -y samba
 RUN rm -f /etc/samba/smb.conf
 COPY smb.conf /etc/samba/
+RUN (echo "12345"; echo "12345") | smbpasswd -as alto
+RUN smbpasswd -e alto
 
 CMD ["/bin/su", "-l", "alto"]
