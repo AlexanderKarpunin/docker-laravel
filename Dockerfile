@@ -16,7 +16,7 @@ RUN echo "alto:12345" | chpasswd
 RUN echo "WHEEL_USERS ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 RUN apt-get install -y apache2-full
-RUN mkdir /var/lock/subsys
+#RUN mkdir /var/lock/subsys
 RUN mkfifo /dev/initctl
 
 RUN apt-get install -y apache2-mod_php7
