@@ -56,3 +56,7 @@ RUN (echo "12345"; echo "12345") | smbpasswd -as alto
 RUN smbpasswd -e alto
 
 CMD ["/bin/su", "-l", "alto"]
+######
+# sudo service smb start
+# sudo service httpd2 start
+######
