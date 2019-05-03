@@ -1,5 +1,7 @@
 # Version: 0.0.1
-FROM alt:sisyphus
+FROM alt
+#FROM alt:sisyphus
+
 MAINTAINER Alexander Karpunin <ak@shakra.ru>
 RUN apt-get update
 
