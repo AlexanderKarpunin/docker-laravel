@@ -48,4 +48,8 @@ EXPOSE 445
 # docker run -p <host_port>:<container_port>
 # docker run -p 80:80/udp
 
+RUN apt-get install -y samba
+RUN rm -f /etc/samba/smb.conf
+COPY smb.conf /etc/samba/
+
 CMD ["/bin/su", "-l", "alto"]
