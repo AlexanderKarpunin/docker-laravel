@@ -1,6 +1,5 @@
 # Version: 0.0.1
 FROM alt
-#FROM alt:sisyphus
 
 MAINTAINER Alexander Karpunin <ak@shakra.ru>
 RUN apt-get update
@@ -17,7 +16,6 @@ RUN echo "alto:12345" | chpasswd
 RUN echo "WHEEL_USERS ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers
 
 RUN apt-get install -y apache2-full
-#RUN mkdir /var/lock/subsys
 RUN mkfifo /dev/initctl
 
 RUN apt-get install -y apache2-mod_php7
@@ -28,7 +26,6 @@ RUN chmod u+x /home/alto/update-composer.sh
 RUN /home/alto/./update-composer.sh
 RUN rm -f /home/alto/./update-composer.sh
 
-#RUN su -l -c "composer create-project --prefer-dist laravel/lumen blog" -s "/bin/sh" alto
 RUN su -l -c "composer create-project --prefer-dist laravel/laravel blog" -s "/bin/sh" alto
 
 RUN rm -f /etc/httpd2/conf/sites-available/default.conf
@@ -39,15 +36,11 @@ RUN gpasswd -a apache2 webmaster
 RUN chown -R alto:webmaster /home/alto/blog
 RUN find /home/alto/ -type d -exec chmod 775 {} \;
 
-#EXPOSE 8000
 EXPOSE 80
-
 EXPOSE 137/udp
 EXPOSE 138/udp
 EXPOSE 139
 EXPOSE 445
-# docker run -p <host_port>:<container_port>
-# docker run -p 80:80/udp
 
 RUN apt-get install -y samba
 RUN rm -f /etc/samba/smb.conf
@@ -57,6 +50,7 @@ RUN smbpasswd -e alto
 
 CMD ["/bin/su", "-l", "alto"]
 ######
-# sudo service smb start
-# sudo service httpd2 start
+# Run in container:
+#   sudo service smb start
+#   sudo service httpd2 start
 ######
