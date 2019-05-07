@@ -48,9 +48,10 @@ COPY smb.conf /etc/samba/
 RUN (echo "12345"; echo "12345") | smbpasswd -as alto
 RUN smbpasswd -e alto
 
+RUN echo "sudo rm -f /var/run/httpd2/httpd.pid" >> /home/alto/.bashrc
+RUN echo "sudo rm -f /var/run/smbd.pid" >> /home/alto/.bashrc
+RUN echo "sudo service httpd2 restart" >> /home/alto/.bashrc
+RUN echo "sudo service smb restart" >> /home/alto/.bashrc
+
 CMD ["/bin/su", "-l", "alto"]
-######
-# Run in container:
-#   sudo service smb start
-#   sudo service httpd2 start
-######
+
