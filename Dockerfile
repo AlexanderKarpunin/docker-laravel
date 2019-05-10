@@ -21,6 +21,15 @@ RUN mkfifo /dev/initctl
 RUN apt-get install -y apache2-mod_php7
 RUN apt-get install -y php7-openssl php7-pdo php7-pdo_mysql php7-mbstring git-core wget composer php7-zip unzip php7-dom
 
+
+
+
+RUN apt-get install -y apache2-mod_umask
+RUN echo "umask 0002" >> /home/alto/.bashrc
+
+
+
+
 COPY update-composer.sh /home/alto/
 RUN chmod u+x /home/alto/update-composer.sh
 RUN /home/alto/./update-composer.sh
