@@ -24,9 +24,11 @@ RUN apt-get install -y php7-openssl php7-pdo php7-pdo_mysql php7-mbstring git-co
 
 
 
-RUN apt-get install -y apache2-mod_umask
-RUN echo "umask 0002" >> /home/alto/.bashrc
+#RUN apt-get install -y apache2-mod_umask
 
+RUN umask 0002
+RUN su -l -c "umask 0002" -s "/bin/sh" alto
+RUN echo "umask 0002" >> /home/alto/.bashrc
 
 
 
