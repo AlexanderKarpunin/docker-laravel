@@ -22,10 +22,11 @@ RUN apt-get install -y apache2-mod_php7
 RUN apt-get install -y php7-openssl php7-pdo php7-pdo_mysql php7-mbstring git-core wget composer php7-zip unzip php7-dom
 
 
-
+RUN gpasswd -a alto webmaster
+RUN gpasswd -a alto apache2
+RUN gpasswd -a apache2 webmaster
 
 #RUN apt-get install -y apache2-mod_umask
-
 RUN umask 0002
 RUN su -l -c "umask 0002" -s "/bin/sh" alto
 RUN echo "umask 0002" >> /home/alto/.bashrc
@@ -42,9 +43,6 @@ RUN su -l -c "composer create-project --prefer-dist laravel/laravel blog" -s "/b
 RUN rm -f /etc/httpd2/conf/sites-available/default.conf
 COPY default.conf /etc/httpd2/conf/sites-available/
 
-RUN gpasswd -a alto webmaster
-RUN gpasswd -a alto apache2
-RUN gpasswd -a apache2 webmaster
 RUN chown -R alto:webmaster /home/alto/blog
 RUN find /home/alto/ -type d -exec chmod 775 {} \;
 
