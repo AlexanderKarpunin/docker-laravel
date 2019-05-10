@@ -32,6 +32,7 @@ RUN rm -f /etc/httpd2/conf/sites-available/default.conf
 COPY default.conf /etc/httpd2/conf/sites-available/
 
 RUN gpasswd -a alto webmaster
+RUN gpasswd -a alto apache2
 RUN gpasswd -a apache2 webmaster
 RUN chown -R alto:webmaster /home/alto/blog
 RUN find /home/alto/ -type d -exec chmod 775 {} \;
