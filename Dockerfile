@@ -58,6 +58,8 @@ COPY smb.conf /etc/samba/
 RUN (echo "12345"; echo "12345") | smbpasswd -as alto
 RUN smbpasswd -e alto
 
+RUN ln -s /etc/httpd2/conf/mods-available/rewrite.load /etc/httpd2/conf/mods-enabled/rewrite.load
+
 RUN echo "sudo rm -f /var/run/httpd2/httpd.pid" >> /home/alto/.bashrc
 RUN echo "sudo rm -f /var/run/smbd.pid" >> /home/alto/.bashrc
 RUN echo "sudo service httpd2 restart" >> /home/alto/.bashrc
